@@ -1,0 +1,12 @@
+<div>
+  <form (ngSubmit)="onAdd()" [formGroup]="addForm">
+    <input formControlName="title" placeholder="Add..." type="text"/>
+  </form>
+
+  <div *ngIf="state.isLoading()">Loading...</div>
+  <div *ngIf="state.error()">{{state.error()}}</div>
+
+  <div *ngFor="let post of state.posts()">
+    {{post.title}} <span (click)="removePost(post.id)">X</span>
+  </div>
+</div>
